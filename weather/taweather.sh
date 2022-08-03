@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Weather Script for Tawaa-RP
-# Requires: weather-util,pom, and hdate to be installed.
+# Requires: weather-util,pom, and sunwait to be installed.
 
 # Usage:  Generates a text file named "taweather" in the root directory of your server's web directory, containing weather info
 
