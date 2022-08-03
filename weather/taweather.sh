@@ -31,11 +31,10 @@ location="ksea"
 
 conditions=$(weather -q --no-cache $location)
 
-# Next:  Sunrise and sunset.  We'll use hdate for it.  I could do some complicated stuff to get the data out of it and all that.
-# Or I can just run the command and grep it.
-# To match everything else, we're also going to capitalize the S in 'Sun'
-
-sun=$(hdate -qs | grep "sunrise\|sunset" | sed 's/sun/Sun/')
+# Next:  Sunrise and sunset.  We'll use sunwait for it.  Defaults to a place in England, but we can change that.
+                          
+sunrise=$(/snap/bin/sunwait list rise)
+sunset=$(/snap/bin/sunwait list set)
 
 # And now the moon state.  Pom may be in a different location depending on your distribution; it does seem an absolute path may be required here?
 
