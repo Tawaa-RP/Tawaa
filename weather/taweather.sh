@@ -9,6 +9,19 @@
 # The plan here is pretty simple; just get the month as a number and do a quick case thing so that if the month is a certain number, the location is different
 # Unfortunately we haven't settled on locations yet, so we'll just use somewhere fittingly cloudy and dreary on some large body of water.
 
+# Code for the Monthly weather thingy:
+
+# Locations as an array; each location is set with whatever weather-util will resolve relatively close to the location.
+# Months list as just a monthname are placeholders.
+# Seattle is used as a zero index here for padding; since we're getting a month as a number we need to have array locations 1-12 filled, so that's 13
+# If for some reason the date command returns a zero at least it'll return some data?
+# The - in the date command before the m removes the leading zero from the month, otherwise the script throws an error.  I guess 08 isn't the same value as 8.
+
+#locations=(ksea Novosibirsk Feb 16046 "Puerto Montt" Shillong caz522 saco Aug Sept Oct Nov Tromso)
+#location=${locations[$(date +%-m)]}
+
+# Comment this line out so that the location is autoselected.  Alternatively, uncomment this and replace the location code to override.
+
 location="ksea"
 
 # Configure your command here.  If your command has arguments, enclose it in quotes
