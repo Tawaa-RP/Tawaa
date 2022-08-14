@@ -28,8 +28,11 @@ location="ksea"
 # First is the actual weather command to get weather at the location.
 # We're doing "quiet" to remove headers; no-cache to (hopefully) force the data to update whenever this command is run.  The output file will be the cache.
 # Ideally you should only run the script every so often; if you do it every minute or so I imagine there might be problems.
+# In this case we're also overriding the OPENSSL library with prepending OPENSSL_CONF=openssl.conf so that we can use unsafe legacy renegotiations
+# This is dangerous in sensitive settings hence why the OS disables it by default.  In our case it's just weather and there's no other way to make it work
+# Short of getting a government IT job for the specific agency managing the server we're pulling data from and fixing their SSL setup, so this will do in the meantime.
 
-conditions=$(weather -q --no-cache $location)
+conditions=$(OPENSSL_CONF=openssl.conf weather -q --no-cache $location)
 
 # Next:  Sunrise and sunset.  We'll use sunwait for it.  Defaults to a place in England, but we can change that.
                           
