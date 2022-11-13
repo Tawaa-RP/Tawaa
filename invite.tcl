@@ -62,10 +62,12 @@ proc commands {nick uhand handle chan input} {
                 switch -regexp --$input {
                         On|on|1 {
                         channel set $chan +weather
+                        channel set $chan +help
                         putserv "privmsg $chan :$nick has turned commands on."
                         }
                         Off|off|0 {
                         channel set $chan -weather
+                        channel set $chan -help
                         putserv "privmsg $chan :$nick has turned commands off."
                         }
                 }
