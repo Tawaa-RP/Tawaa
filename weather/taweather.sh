@@ -32,7 +32,7 @@ location="ksea"
 # This is dangerous in sensitive settings hence why the OS disables it by default.  In our case it's just weather and there's no other way to make it work
 # Short of getting a government IT job for the specific agency managing the server we're pulling data from and fixing their SSL setup, so this will do in the meantime.
 
-conditions=$(OPENSSL_CONF=openssl.conf weather -q --no-cache $location)
+conditions=$(weather -q --no-cache $location)
 
 # Next:  Sunrise and sunset.  We'll use sunwait for it.  Defaults to a place in England, but we can change that.
                           
@@ -43,8 +43,12 @@ sunset=$(/snap/bin/sunwait list set)
 
 moon=$(/usr/games/pom)
 
+# And current time 
+
+date=$(/usr/bin/date)
+
 # Actually copy the output to the file, and trim newlines so that it doesn't confuse the bot, as well as add a little bit of versatility
 # Since you may not be using a bot that can handle newlines.
 # This output works with both Eggdrop and my screen-irssi thing
 
-echo "Current Tawaa Weather: $conditions | $sun | $moon" | tr '\n' ' ' > /var/www/html/taweather.txt
+echo "Current Tawaa Weather at $date: $conditions | $sun | $moon" | tr '\n' ' ' > /var/www/html/taweather.txt
