@@ -47,7 +47,7 @@ putlog "URL is: $query"
 #Debug:  Verify the response received was correct. Maybe the website responded with something unparsable.
 putlog "Content of URL is:  $html"
 #Send the messages to the channel, in the order of weather data, ADDS, and then live camera/moon phases.
-putquick "PRIVMSG $chan $html"
+putquick "PRIVMSG $chan :[lindex $html]"
 }
 
 #Now the actual cron function.  It takes the arguments of minute, hour, etc.  Set how often you want it to fire off
