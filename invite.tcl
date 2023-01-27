@@ -5,6 +5,7 @@
 bind raw - invite the341
 bind pub - !leave leavechan
 bind pub - !commands commands
+bind pub - !logging log
 
 set oldinvitetime [expr [unixtime] - 60]
 set oldchan ""
@@ -73,5 +74,24 @@ proc commands {nick uhand handle chan input} {
                 }
         } else {
                 putserv "privmsg $chan :Sorry, only an op can change the comand state."
+        }
+}
+
+
+proc log {nick uhand handle chan input} {
+        if {[isop $nick $chan] } {
+                                switch -regexp --$input {
+                        On|on|1 {
+                        file mkdir chatlogs/$chan
+                        logfile jkp $chan chatlogs/$chan/log
+                        putserv "privmsg $chan :$nick has turned logging on."
+                        }
+                        Off|off|0 {
+                        putserv "privmsg $chan :$nick has turned logging off."
+                        logfile jkp $chan /dev/null
+                        }
+                }
+        } else { 
+                putserv "privmsg $chan :Sorry, only an op can change the logging state."
         }
 }
