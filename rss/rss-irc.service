@@ -1,5 +1,5 @@
 [Unit]
-eDescription=RSS to IRC bridge
+Description=RSS to IRC bridge
 After=network-online.target
 After=thelounge.service
 After=znc.service
