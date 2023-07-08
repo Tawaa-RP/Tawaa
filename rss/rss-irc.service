@@ -1,0 +1,14 @@
+[Unit]
+eDescription=RSS to IRC bridge
+After=network-online.target
+After=thelounge.service
+After=znc.service
+
+[Service]
+RemainAfterExit=yes
+ExecStart=rsspost.sh
+Resratrt=on-failure
+user=eggdrop                           
+
+[Install]                             
+WantedBy=multi-user.target
