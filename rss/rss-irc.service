@@ -7,7 +7,7 @@ After=znc.service
 [Service]
 RemainAfterExit=yes
 ExecStart=rsspost.sh
-Resratrt=on-failure
+Restart=on-failure
 user=eggdrop                           
 
 [Install]                             
