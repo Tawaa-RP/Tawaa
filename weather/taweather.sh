@@ -17,12 +17,12 @@
 # If for some reason the date command returns a zero at least it'll return some data?
 # The - in the date command before the m removes the leading zero from the month, otherwise the script throws an error.  I guess 08 isn't the same value as $
 
-#locations=(ksea Novosibirsk Feb 16046 "Puerto Montt" Shillong caz522 saco Aug Sept Oct Nov Tromso)
-#location=${locations[$(date +%-m)]}
+locations=(ksea Novosibirsk egpf 16046 "Puerto Montt" Shillong caz522 saco "Cape Town" hkjk haab ksea Tromso)
+location=${locations[$(date +%-m)]}
 
 # Comment this line out so that the location is autoselected.  Alternatively, uncomment this and replace the location code to override.
-
-location="ksea"
+                                       
+#location="ksea"
 
 # Configure your commands here.  If your command has arguments, enclose it in quotes
 # First is the actual weather command to get weather at the location.
